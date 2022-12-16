@@ -23,7 +23,7 @@ namespace VendasBack.Controllers
         [HttpGet]
         public IActionResult GetAllVendedores()
         {
-            return Ok(_context.Vendendores.ToList());
+            return Ok(_context.Vendendores.Where(x => x.IsDeleted == false).ToList());
         }
 
         [HttpGet("{id}")]
