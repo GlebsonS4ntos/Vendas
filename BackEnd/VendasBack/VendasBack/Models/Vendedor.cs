@@ -11,8 +11,7 @@ namespace VendasBack.Models
         public string Nome { get; set; }
         public string Cnpj { get; set; }
         public string EnderecoFilial { get; set; }
-        public Boolean IsDelected { get; set; }
-        public int ProdutoId { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public Produto Produto { get; set; }
     }
 }

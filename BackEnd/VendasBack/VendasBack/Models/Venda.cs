@@ -12,6 +12,8 @@ namespace VendasBack.Models
         public Cliente Cliente { get; set; }
         public int ProdutoId { get; set; }
         public Produto Produto { get; set; }
+        public int Quantidade { get; set; }
+        public bool IsCanceled { get; set; }
 
     }
 }

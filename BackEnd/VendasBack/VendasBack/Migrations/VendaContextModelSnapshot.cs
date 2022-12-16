@@ -83,11 +83,17 @@ namespace VendasBack.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsCanceled")
+                        .HasColumnType("bit");
+
                     b.Property<int>("ProdutoId")
                         .HasColumnType("int");
 
                     b.Property<string>("ProdutoId1")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -111,14 +117,11 @@ namespace VendasBack.Migrations
                     b.Property<string>("EnderecoFilial")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDelected")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProdutoId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
