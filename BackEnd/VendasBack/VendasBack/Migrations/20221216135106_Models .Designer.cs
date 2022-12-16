@@ -9,8 +9,8 @@ using VendasBack.Data;
 namespace VendasBack.Migrations
 {
     [DbContext(typeof(VendaContext))]
-    [Migration("20221216011650_formacaoDoBd")]
-    partial class formacaoDoBd
+    [Migration("20221216135106_Models ")]
+    partial class Models
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,8 +46,10 @@ namespace VendasBack.Migrations
 
             modelBuilder.Entity("VendasBack.Models.Produto", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
@@ -91,9 +93,6 @@ namespace VendasBack.Migrations
                     b.Property<int>("ProdutoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProdutoId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
@@ -101,7 +100,7 @@ namespace VendasBack.Migrations
 
                     b.HasIndex("ClienteId");
 
-                    b.HasIndex("ProdutoId1");
+                    b.HasIndex("ProdutoId");
 
                     b.ToTable("Venda");
                 });
@@ -151,7 +150,9 @@ namespace VendasBack.Migrations
 
                     b.HasOne("VendasBack.Models.Produto", "Produto")
                         .WithMany("Vendas")
-                        .HasForeignKey("ProdutoId1");
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Cliente");
 

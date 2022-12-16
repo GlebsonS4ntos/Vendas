@@ -2,7 +2,7 @@
 
 namespace VendasBack.Migrations
 {
-    public partial class formacaoDoBd : Migration
+    public partial class Models : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,7 +42,8 @@ namespace VendasBack.Migrations
                 name: "Produtos",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Preço = table.Column<double>(type: "float", nullable: false),
@@ -69,7 +70,6 @@ namespace VendasBack.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClienteId = table.Column<int>(type: "int", nullable: false),
                     ProdutoId = table.Column<int>(type: "int", nullable: false),
-                    ProdutoId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     IsCanceled = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -83,8 +83,8 @@ namespace VendasBack.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Venda_Produtos_ProdutoId1",
-                        column: x => x.ProdutoId1,
+                        name: "FK_Venda_Produtos_ProdutoId",
+                        column: x => x.ProdutoId,
                         principalTable: "Produtos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -102,9 +102,9 @@ namespace VendasBack.Migrations
                 column: "ClienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Venda_ProdutoId1",
+                name: "IX_Venda_ProdutoId",
                 table: "Venda",
-                column: "ProdutoId1");
+                column: "ProdutoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
