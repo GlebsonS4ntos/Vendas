@@ -24,6 +24,7 @@ namespace VendasBack.Controllers
         public IActionResult GetAllVendedores()
         {
             return Ok(_context.Vendendores.Where(x => x.IsDeleted == false).ToList());
+            //O where é pra caso o vendedor tenha se deletado ele n vir 
         }
 
         [HttpGet("{id}")]
@@ -58,7 +59,7 @@ namespace VendasBack.Controllers
             vendedor.EnderecoFilial = v.EnderecoFilial;
 
             _context.SaveChanges();
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
@@ -71,7 +72,7 @@ namespace VendasBack.Controllers
             }
             v.IsDeleted = true;
             _context.SaveChanges();
-            return Ok();
+            return NoContent();
         }
 
     }

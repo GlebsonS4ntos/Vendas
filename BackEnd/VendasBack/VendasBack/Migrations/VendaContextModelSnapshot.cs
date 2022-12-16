@@ -58,7 +58,7 @@ namespace VendasBack.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Preço")
+                    b.Property<double>("Preco")
                         .HasColumnType("float");
 
                     b.Property<int>("Quantidade")
@@ -129,13 +129,13 @@ namespace VendasBack.Migrations
 
             modelBuilder.Entity("VendasBack.Models.Produto", b =>
                 {
-                    b.HasOne("VendasBack.Models.Vendedor", "Vedendor")
+                    b.HasOne("VendasBack.Models.Vendedor", "Vendedor")
                         .WithOne("Produto")
                         .HasForeignKey("VendasBack.Models.Produto", "VendedorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Vedendor");
+                    b.Navigation("Vendedor");
                 });
 
             modelBuilder.Entity("VendasBack.Models.Venda", b =>

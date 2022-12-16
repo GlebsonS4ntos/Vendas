@@ -11,12 +11,12 @@ namespace VendasBack.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public double Preço { get; set; }
+        public double Preco { get; set; }
         public int Quantidade { get; set; }
         public string LinkImagem { get; set; }
         public int VendedorId { get; set; }
-        public Vendedor Vedendor { get; set; }
+        public virtual Vendedor Vendedor { get; set; }
         [JsonIgnore]
-        public ICollection<Venda> Vendas { get; set; }
+        public virtual ICollection<Venda> Vendas { get; set; }
     }
 }

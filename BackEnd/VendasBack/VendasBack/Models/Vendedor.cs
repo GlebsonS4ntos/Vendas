@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace VendasBack.Models
@@ -12,6 +13,7 @@ namespace VendasBack.Models
         public string Cnpj { get; set; }
         public string EnderecoFilial { get; set; }
         public bool IsDeleted { get; set; } = false;
-        public Produto Produto { get; set; }
+        [JsonIgnore]
+        public virtual Produto Produto { get; set; }
     }
 }

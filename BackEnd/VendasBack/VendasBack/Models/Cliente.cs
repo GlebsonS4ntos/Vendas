@@ -14,6 +14,6 @@ namespace VendasBack.Models
         public string Email { get; set; }
         public bool IsDeleted { get; set; } = false;
         [JsonIgnore]
-        public ICollection<Venda> Vendas { get; set; }
+        public virtual ICollection<Venda> Vendas { get; set; }
     }
 }

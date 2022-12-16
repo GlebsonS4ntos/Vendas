@@ -28,7 +28,7 @@ namespace VendasBack
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<VendaContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("BdConnection")));
+            services.AddDbContext<VendaContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("BdConnection")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
