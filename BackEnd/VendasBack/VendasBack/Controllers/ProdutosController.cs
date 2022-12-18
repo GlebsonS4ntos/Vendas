@@ -45,7 +45,7 @@ namespace VendasBack.Controllers
             {
                 return BadRequest();
             }
-            Vendedor v = _context.Vendendores.FirstOrDefault(x => x.Id == p.Id);
+            Vendedor v = _context.Vendendores.FirstOrDefault(x => x.Id == p.VendedorId);
             if (v == null || v.IsDeleted == true) //caso o id do vendedor n exista ou o vendedor tenha deletado a conta
             {
                 return BadRequest();
