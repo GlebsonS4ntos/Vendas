@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VendasBack.Data;
+using VendasBack.Data.Dtos.VendedoresDTO;
 using VendasBack.Models;
 
 namespace VendasBack.Controllers
@@ -14,17 +16,21 @@ namespace VendasBack.Controllers
     public class VendedoresController : ControllerBase
     {
         private VendaContext _context;
+        private IMapper _mapper;
 
-        public VendedoresController(VendaContext context)
+        public VendedoresController(VendaContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult GetAllVendedores()
         {
-            return Ok(_context.Vendendores.Where(x => x.IsDeleted == false).ToList());
             //O where é pra caso o vendedor tenha se deletado ele n vir 
+            IEnumerable<Vendedor> vendedores= _context.Vendendores.Where(x => x.IsDeleted == false).ToList();
+            IEnumerable<ReadVendedorDTO> readVendedores = _mapper.Map<IEnumerable<ReadVendedorDTO>>(vendedores);
+            return Ok(readVendedores);
         }
 
         [HttpGet("{id}")]
@@ -35,29 +41,29 @@ namespace VendasBack.Controllers
             {
                 return NotFound();
             }
-            return Ok(v); 
+            ReadVendedorDTO readVendedor = _mapper.Map<ReadVendedorDTO>(v);
+            return Ok(readVendedor); 
         }
 
         [HttpPost]
-        public IActionResult CreatedVendedor([FromBody] Vendedor v)
+        public IActionResult CreatedVendedor([FromBody] CreateVendedorDTO createVendedor)
         {
+            Vendedor v = _mapper.Map<Vendedor>(createVendedor);
             _context.Vendendores.Add(v);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(GetVendedorById), new { v.Id }, v);
+            ReadVendedorDTO readVendedor = _mapper.Map<ReadVendedorDTO>(v);
+            return CreatedAtAction(nameof(GetVendedorById), new { readVendedor.Id }, readVendedor);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateVendendor(int id, [FromBody] Vendedor v)
+        public IActionResult UpdateVendendor(int id, [FromBody] UpdateVendedorDTO updateVendedor)
         {
             Vendedor vendedor = _context.Vendendores.FirstOrDefault(x =>x.Id == id);
             if (vendedor == null || vendedor.IsDeleted == true)
             {
                 return NotFound();
             }
-            vendedor.Nome = v.Nome;
-            vendedor.Cnpj = v.Cnpj;
-            vendedor.EnderecoFilial = v.EnderecoFilial;
-
+            _mapper.Map(updateVendedor, vendedor);
             _context.SaveChanges();
             return NoContent();
         }

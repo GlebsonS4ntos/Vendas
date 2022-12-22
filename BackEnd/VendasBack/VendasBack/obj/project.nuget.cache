@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "VD3zaHUV31vDL7ImKzxmts+mCs6iBL3fjX0AhaPHYd8BxaW6BmETmjJTBVNDyaIG8fUZO+q8inj5BIPtIpiqoQ==",
+  "dgSpecHash": "Q9mshFZEKk+nvtoR8qLSsKPqt5goFJBC/UE4ENO7KzsI7ayMf/punilsZe0Kx34PdZ3Z0IZHH5irilr4jrgeyg==",
   "success": true,
   "projectFilePath": "E:\\Vendas\\BackEnd\\VendasBack\\VendasBack\\VendasBack.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\glebs\\.nuget\\packages\\automapper\\8.1.1\\automapper.8.1.1.nupkg.sha512",
+    "C:\\Users\\glebs\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.1.1\\automapper.extensions.microsoft.dependencyinjection.6.1.1.nupkg.sha512",
     "C:\\Users\\glebs\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\glebs\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\glebs\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

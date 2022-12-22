@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using VendasBack.Models;
 
-namespace VendasBack.Models
+namespace VendasBack.Data.Dtos.ProdutosDTO
 {
-    public class Produto
+    public class CreateProdutoDTO
     {
-        [Required]
-        [Key]
-        public int Id { get; set; }
         [Required]
         [StringLength(100, ErrorMessage = "O Campo Nome n pode ter mais que 100 caracteres")]
         public string Nome { get; set; }
@@ -28,8 +23,5 @@ namespace VendasBack.Models
         public string LinkImagem { get; set; }
         [Required]
         public int VendedorId { get; set; }
-        public virtual Vendedor Vendedor { get; set; }
-        [JsonIgnore]
-        public virtual ICollection<Venda> Vendas { get; set; }
     }
 }

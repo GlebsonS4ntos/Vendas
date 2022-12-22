@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,7 @@ namespace VendasBack
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VendasBack", Version = "v1" });
             });
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //Configuração de Uso do AutoMapper
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

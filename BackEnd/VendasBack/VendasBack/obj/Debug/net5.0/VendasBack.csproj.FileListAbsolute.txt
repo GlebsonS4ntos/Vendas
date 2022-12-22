@@ -65,3 +65,5 @@ E:\Vendas\BackEnd\VendasBack\VendasBack\obj\Debug\net5.0\staticwebassets\msbuild
 E:\Vendas\BackEnd\VendasBack\VendasBack\obj\Debug\net5.0\refint\VendasBack.dll
 E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\Castle.Core.dll
 E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
+E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\AutoMapper.dll
+E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
