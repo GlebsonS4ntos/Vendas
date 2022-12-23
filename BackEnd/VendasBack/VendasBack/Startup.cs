@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VendasBack.Data;
+using VendasBack.Services;
 
 namespace VendasBack
 {
@@ -36,6 +37,10 @@ namespace VendasBack
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VendasBack", Version = "v1" });
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //Configuração de Uso do AutoMapper
+            services.AddScoped<ClienteService, ClienteService>();
+            services.AddScoped<ProdutoService, ProdutoService>();
+            services.AddScoped<VendedorService, VendedorService>();
+            services.AddScoped<VendaService, VendaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

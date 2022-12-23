@@ -67,3 +67,10 @@ E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\Castle.Core.dll
 E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
 E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\AutoMapper.dll
 E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\FluentAssertions.dll
+E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\FluentResults.dll
+E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\FluentResults.Extensions.FluentAssertions.dll
+E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+E:\Vendas\BackEnd\VendasBack\VendasBack\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,6 +7,7 @@ using System.Linq;
 using VendasBack.Data;
 using VendasBack.Data.Dtos.VendasDTO;
 using VendasBack.Models;
+using VendasBack.Services;
 
 namespace VendasBack.Controllers
 {
@@ -14,65 +16,37 @@ namespace VendasBack.Controllers
     public class VendasController : ControllerBase
     {
 
-        private VendaContext _context;
-        private IMapper _mapper;
+        private VendaService _service;
 
-        public VendasController(VendaContext context, IMapper mapper)
+        public VendasController(VendaService service)
         {
-            _context = context;
-            _mapper = mapper;
+            _service = service;
         }
 
         [HttpGet]
         public IActionResult GetAllVendas()
         {
-            IEnumerable<Venda> vendas = _context.Venda.Where(x => x.IsCanceled == false).ToList();
-            IEnumerable<ReadVendaDTO> readVendas = _mapper.Map<IEnumerable<ReadVendaDTO>>(vendas);
-            return Ok(readVendas);
+            return Ok(_service.GetAllVendas());
         }
 
         [HttpGet("{id}")]
         public IActionResult GetVendaById(int id)
         {
-            Venda v = _context.Venda.FirstOrDefault(venda => venda.Id == id);
-            if (v == null)
-            {
-                return NotFound();
-            }
-            ReadVendaDTO readVenda = _mapper.Map<ReadVendaDTO>(v);
-            return Ok(readVenda);
+            ReadVendaDTO readVenda = _service.GetVendaById(id);
+            return readVenda == null? NotFound() : Ok(readVenda);
         }
         [HttpPost]
         public IActionResult CreatedVenda([FromBody] CreateVendaDTO createVenda)
         {
-            Produto p = _context.Produtos.FirstOrDefault(produtos => produtos.Id == createVenda.ProdutoId);
-            if (p == null || p.Quantidade - createVenda.Quantidade < 0 || p.Vendedor.IsDeleted == true)
-            {
-                //caso o produto n exista
-                //caso a quantidade de produtos da venda seja maior que a quantidade de produtos ele ficaria negativo o que n pode acontecer
-                //caso o Vendedor do produto tenha se desligado, e de alguma forma conseguiu fazer a compra de um produto que n aparece
-                return BadRequest();
-            }
-            p.Quantidade -= createVenda.Quantidade; //decremento
-            Venda v = _mapper.Map<Venda>(createVenda);
-            _context.Venda.Add(v);
-            _context.SaveChanges();
-            ReadVendaDTO readVenda = _mapper.Map<ReadVendaDTO>(v);
-            return CreatedAtAction(nameof(GetVendaById), new { readVenda.Id }, readVenda);
+            ReadVendaDTO readVenda = _service.CreatedVenda(createVenda);
+            return readVenda == null? BadRequest() : CreatedAtAction(nameof(GetVendaById), new { readVenda.Id }, readVenda);
         }
 
         [HttpDelete("{id}")]
         public  IActionResult CancelarVenda(int id)
         {
-            Venda v = _context.Venda.FirstOrDefault(x => x.Id == id);
-            if (v == null)
-            {
-                return NotFound();
-            }
-            Produto p = _context.Produtos.FirstOrDefault(x => x.Id == v.ProdutoId);
-            p.Quantidade += v.Quantidade; //adicionando novamente a quantidade do produto que seria retirada na venda
-            _context.SaveChanges();
-            return NoContent();
+            Result resultadoDelete = _service.CancelarVenda(id);
+            return resultadoDelete.IsFailed? NotFound() : NoContent();
         }
     }
 }
