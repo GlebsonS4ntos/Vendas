@@ -1,0 +1,32 @@
+version: '3.4'
+
+networks:
+  conexaoBanco:
+  conexaoAPI_FRONT:
+
+services:
+  vendasback:
+    image: ${DOCKER_REGISTRY-}vendasback
+    build:
+      context: .
+      dockerfile: VendasBack/Dockerfile
+    networks:
+      - conexaoBanco
+      - conexaoAPI_FRONT
+    ports: 
+      - "8081:80"
+    depends_on:
+      - sqldata
+
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-CU14-ubuntu-20.04
+    environment:
+      - SA_PASSWORD=P@ssword
+      - ACCEPT_EULA=Y
+    networks:
+      - conexaoBanco
+    ports:
+      - "143:143"
+    volumes:
+      - c:\Users\glebs\Desktop\Volume\mssql:/var/opt/mssql/data
+

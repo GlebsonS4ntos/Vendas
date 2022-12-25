@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AmhMI4ThtkmeQ/2q852pfXEV9Hn8E+DR+6Tyq3Kih5RxqspW2wQN6dT5XZztAyvP2Cg7l7LS0oJkTwiNerr8sg==",
+  "dgSpecHash": "s7toYsto6qmFSBysMziRWVp3/H2V03JMXo/gB8LHfv+xnxGWAsfx39FcPnuTF1f8BSHpKakrqsuE1mAqbFA1zw==",
   "success": true,
   "projectFilePath": "E:\\Vendas\\BackEnd\\VendasBack\\VendasBack\\VendasBack.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,7 @@
     "C:\\Users\\glebs\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\glebs\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\glebs\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\glebs\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\glebs\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\glebs\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\glebs\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
